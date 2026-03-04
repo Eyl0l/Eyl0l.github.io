@@ -11,6 +11,7 @@
       }
     });
   </script>
+  <script>
   <a-scene id="s1" background="color:#0d0928" fog="far:300" shadow="type: pcfsoft">
     <a-camera position="0 3 0"></a-camera>
     <a-sphere radius="500" position="0 5000 0" material="fog: false"></a-sphere>
@@ -32,6 +33,7 @@
     <a-entity gltf-model="#bird" scale="5 5 5" shadow="receive: false" position="50 25 -50" rotation="0 180 0"
       sound="src:#hawk; poolSize: 2" sounding></a-entity>
   </a-scene>
+  </script>
   <script>
    var scene1 = document.getElementById('s1');
    for (var i = 0; i < 500; i++) {
@@ -47,6 +49,8 @@
        tree.setAttribute('shadow', 'receive: false');
        scene1.appendChild(tree);
    }
+  </script>
+  <script>
     for (var i = 0; i < 10; i++) {
        var bee = document.createElement('a-entity');
        var x = Math.random() * 10 - 5;
