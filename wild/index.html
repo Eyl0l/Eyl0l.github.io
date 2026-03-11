@@ -61,6 +61,10 @@
       sound="src:#hawk; poolSize: 2" sounding
       animation="property: position; from: 50 50 500; to: 50 50 -500; dur: 33000; loop: true" animation-mixer>
       </a-entity>
+    <a-entity id="rig">
+      <a-camera position="0 3 0"></a-camera>
+      <a-entity oculus-touch-controls="hand: right" oculus-thumbstick-controls></a-entity>
+    </a-entity>
   </a-scene>
    <script>
    var scene1 = document.getElementById('s1');
