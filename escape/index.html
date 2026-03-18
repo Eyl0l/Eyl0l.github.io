@@ -20,7 +20,7 @@
         document.getElementById('cam').setAttribute('position', pos);
       }
     });
-    AFRAME,registerComponent('focusing', {
+    AFRAME.registerComponent('focusing', {
       init: function () {
         var el = this.el;
         el.addEventListener('mouseenter', function () {
