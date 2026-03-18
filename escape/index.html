@@ -52,7 +52,7 @@
   </script>
 </head>
 <body>
-  <a-scene id="s1" fog="color: silver; near: 0" animation="property: fog.far; to 5; dur: 50000; easing: easeOutQuad">
+  <a-scene id="s1" fog="color: silver; near: 0" animation="property: fog.far; to: 5; dur: 50000; easing: easeOutQuad">
     <a-plane static-body width="40" height="8" position="20 4 0" rotation="0 90 0">
        <a-box id="window" color="silver" opacity="0.5" scale="1.25 1.25 0.5" position="-15 2 -0.2"
          sound="src: url(mixkit-glass-break-with-hammer-thud-759.wav)">
@@ -74,7 +74,6 @@
       <a-cursor color="yellow" fuse="true" far="10"></a-cursor>
       <a-light id="light" distance="20" intensity="0.25" type="spot" penumbra="0.5" visible="false"></a-light>
     </a-camera>
-  </body>
     <a-cylinder dynamic-body id="hammer" color="tan" height="0.5" radius="0.05" focusing>
       <a-box color="black" width="0.5" height="0.1" depth="0.1" position="0 0.25 0"></a-box>
     </a-cylinder>
@@ -82,7 +81,7 @@
       <a-box color="silver" scale="0.04 0.03 0.02" position="0.02 0.04 0"></a-box>
       <a-torus color="silver" radius="0.03" radius-tubular="0.003" position="0 -0.1 0"></a-torus>
     </a-cylinder>
-    <a-cylinder dynamic body id="torch" height="0.5" radius="0.1" rotation="90 0 0" focusing>
+    <a-cylinder dynamic-body id="torch" height="0.5" radius="0.1" rotation="90 0 0" focusing>
       <a-cone height="0.2" radius-top="0.1" radius-bottom="0.2" position="0 0.2 0" rotation="180 0 0"></a-cone>
       <a-light distance="20" intensity="0.25" type="spot" penumbra="0.5" position="0 0.2 0" rotation="90 0 0"></a-light>
       <a-light distance="0.3" type="spot" position="0 0.4 0" rotation="-90 0 0"></a-light>
@@ -121,4 +120,5 @@
     document.getElementById('torch').setAttribute('position', (Math.random() * 30 - 15) + ' 3 ' + (Math.random() * 30 - 15));
     document.getElementById('key').setAttribute('position', (Math.random() * 30 - 15) + ' 1 ' + (Math.random() * 30 - 15));
   </script>
+</body>
 </html>
