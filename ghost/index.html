@@ -1,4 +1,6 @@
-  <script>
+<html>
+  <head>
+      <script>
     var ghosts = 25, coords;
     function toggle(t, s) {
       document.querySelector('a-scene').setAttribute('fog', 'far: 1');
@@ -53,7 +55,9 @@ AFRAME.registerComponent('ghosting', {
   }
 });
   </script>
-<a-assets>
+  </head>
+<body>
+  <a-assets>
   <a-asset-item id="tree" src="tree.glb"></a-asset-item>
   <a-asset-item id="ghost" src="ghost.gltf"></a-asset-item>
   <a-asset-item id="craft" src="spacecraft.glb"></a-asset-item>
@@ -144,4 +148,6 @@ AFRAME.registerComponent('ghosting', {
       scene1.appendChild(ghost);
     }
   </script>
+</body>
+</html>
     
