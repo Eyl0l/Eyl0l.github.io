@@ -43,7 +43,7 @@ AFRAME.registerComponent('ghosting', {
     this.el.addEventListener('mouseleave', function () {
       document.getElementById('laser').removeAttribute('line');
       this.remove(); ghosts--;
-      if (ghost <= 0) toggle('WELL DONE', '#scream');
+      if (ghosts <= 0) toggle('WELL DONE', '#scream');
     });
   },
   tick: function () {
@@ -89,7 +89,7 @@ AFRAME.registerComponent('ghosting', {
 
     <a-entity id="spacecraft" gltf-model0="#craft" scale="10 10 10"
       animation="property: position; from: 0 66 0; to: 0 77 0; dur: 21000; dir: alternate; loop: true"
-      animation__2="property: position; from: 0 0 0; to: 0 360 0; dur: 39000; dir: alternate; loop: true">
+      animation__2="property: rotation; from: 0 0 0; to: 0 360 0; dur: 39000; dir: alternate; loop: true">
       <a-entity light="type: spot; penumbra: 0.5; distance: 200; castShadow: true" position="0 -1 5" rotation="0 -180 0">
         <a-camera id="cam2" position="0 3 6" wasd-controls="enabled: false" look-controls="enabled: false" active="false">
           <a-entity text="font: https://cdn.aframe.io/fonts/mozillavr.fnt" id="txt" position="0.4 0 -0.2"></a-entity>
