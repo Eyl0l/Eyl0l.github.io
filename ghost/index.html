@@ -7,17 +7,14 @@
     function toggle(t, s) {
       document.querySelector('a-scene').setAttribute('fog', 'type: linear; far: 1000'); // FIX
       document.getElementById('txt').setAttribute('value', t);
-
       setTimeout(function () {
         document.getElementById('cam1').setAttribute('active', 'false');
         document.getElementById('cam2').setAttribute('active', 'true');
       }, 3000);
-
       setTimeout(function () {
         document.getElementById('txt').object3D.position.set(0, 0, 1);
-        document.querySelector('a-scene').setAttribute('fog', 'type: linear; near: 2; far: 1000');
+        document.querySelector('a-scene').setAttribute('fog', 'type: linear; near: 2; far: 1000'); // FIX
       }, 6000);
-
       var playerEl = document.getElementById('player');
       playerEl.setAttribute('sound', 'src: ' + s + '; autoplay: true');
     }
@@ -35,8 +32,7 @@
       tick: function () {
         var pos1 = coords.getAttribute('position');
         var pos2 = this.el.getAttribute('position');
-
-        if (!pos1 || !pos2) return;
+        if (!pos1 || !pos2) return; // FIX
 
         if (Math.abs(pos1.x - pos2.x) < 40 && Math.abs(pos1.z - pos2.z) < 40)
           toggle('GAME OVER', '#explode');
@@ -45,7 +41,6 @@
         var distance = Math.sqrt(pos1.x * pos1.x + pos1.z * pos1.z);
         var angle = Math.atan2(pos1.x, pos1.z) * 180 / Math.PI;
         if (angle < 0) angle = 360 + angle;
-
         if ((Math.abs(rot.y - angle) < 30 || Math.abs(rot.y - angle) > 345) &&
             distance > 5 && distance < 250)
           toggle('GAME OVER', '#police');
@@ -59,94 +54,91 @@
           document.getElementById('laser').setAttribute('line',
             'start: 0 -0.01 0; end: 0 0 -1; color: lime');
         });
-
         this.el.addEventListener('mouseleave', function (evt) {
           document.getElementById('laser').removeAttribute('line');
           evt.target.parentNode.removeChild(evt.target);
           ghosts--;
           if (ghosts <= 0) toggle('WELL DONE', '#scream');
         });
-      }
-    });
-
-    // ✅ GHOST SPAWN EKLENDİ (senin sistemine dokunmadan)
-    window.addEventListener('load', () => {
-      var scene = document.querySelector('a-scene');
-
-      for (let i = 0; i < ghosts; i++) {
-        var ghost = document.createElement('a-entity');
-        ghost.setAttribute('gltf-model', '#ghost');
-        ghost.setAttribute('scale', '5 5 5');
-        ghost.setAttribute('ghosting', '');
-        ghost.setAttribute('colliding', '');
-
-        var x = Math.random() * 600 - 300;
+      },
+      tick: function () {
+        if (Math.random() < 0.99) return;
+        var x = Math.random() * 700 - 350;
         var y = Math.random() * 50 + 10;
-        var z = Math.random() * 600 - 300;
-
-        ghost.setAttribute('position', `${x} ${y} ${z}`);
-        scene.appendChild(ghost);
+        var z = Math.random() * 700 - 350;
+        this.el.setAttribute('animation',
+          'property: position; to: ' + x + ' ' + y + ' ' + z);
       }
     });
   </script>
 </head>
 
 <body>
-  <a-scene>
+  <a-scene fog="type: linear; near: 2; far: 1000"> <!-- FIX -->
 
     <a-assets>
       <a-asset-item id="tree" src="tree.glb"></a-asset-item>
       <a-asset-item id="ghost" src="ghost.gltf"></a-asset-item>
       <a-asset-item id="craft" src="spacecraft.glb"></a-asset-item>
-
       <img id="stars" src="eso0932a.jpg">
       <img id="earth" src="flat_earth03.jpg">
-
-      <img id="b1" src="b1.png">
-      <img id="b2" src="b2.png">
-      <img id="b3" src="b3.png">
-
+      <img id="b1" src="b1.png"><img id="b2" src="b2.png">
+      <img id="b3" src="b3.png"><img id="b4" src="b4.png">
+      <img id="b5" src="b5.png"><img id="b6" src="b6.png">
       <audio id="gun" src="mixkit-short-laser-gun-shot-1670.wav"></audio>
       <audio id="explode" src="mixkit-explosion-in-battle-2809.wav"></audio>
       <audio id="police" src="mixkit-police-siren-us-1643.wav"></audio>
       <audio id="scream" src="mixkit-battle-man-scream-2175.wav"></audio>
     </a-assets>
 
-    <!-- SKY -->
-    <a-sky radius="5000" src="#stars"></a-sky>
+    <a-sky radius="5000" src="#stars"
+      animation="property: rotation; to: 0 90 -30; dur: 20000"></a-sky>
+    <a-sphere radius="1000" src="#earth"
+      animation="property: rotation; to: -30 360 0; dur: 30000"></a-sphere>
+    <a-ring color="black" radius-inner="0" radius-outer="990"
+      rotation="-90 0 0"></a-ring>
 
-    <!-- ZEMİN FIX -->
-    <a-box color="#333" width="200" height="1" depth="200" position="0 0 0"></a-box>
+    <!-- GHOSTLAR (EKLENDİ - sadece görünmesi için) -->
+    <a-entity gltf-model="#ghost" position="0 20 -100" ghosting colliding scale="5 5 5"></a-entity>
+    <a-entity gltf-model="#ghost" position="50 30 -150" ghosting colliding scale="5 5 5"></a-entity>
+    <a-entity gltf-model="#ghost" position="-50 25 -120" ghosting colliding scale="5 5 5"></a-entity>
 
-    <!-- BİNALAR EKLENDİ -->
-    <a-plane src="#b1" position="-50 20 -50" width="20" height="40"></a-plane>
-    <a-plane src="#b2" position="50 20 -70" width="20" height="40"></a-plane>
-    <a-plane src="#b3" position="0 20 -100" width="20" height="40"></a-plane>
+    <!-- BİNALAR (EKLENDİ) -->
+    <a-plane src="#b1" position="100 50 -200" width="100" height="100"></a-plane>
+    <a-plane src="#b2" position="-100 50 -200" width="100" height="100"></a-plane>
 
-    <!-- KAMERA FIX -->
-    <a-entity id="rig" position="0 2 50">
-      <a-camera id="cam1" active="true" wasd-controls="acceleration: 200">
-        <a-cursor color="lime"></a-cursor>
+    <a-entity id="rig" position="0 -20 4900"
+      animation="property: position; to: 0 10 0; dur: 30000; easing: easeInOutQuad">
+      <a-camera id="cam1" active="true" wasd-controls="acceleration: 500">
+        <a-cursor color="lime"
+          animation="property: visible; to: true; dur: 30000"></a-cursor>
         <a-entity id="laser"></a-entity>
         <a-entity id="shot"></a-entity>
         <a-entity id="player"></a-entity>
       </a-camera>
+      <a-entity oculus-touch-controls="hand: right"
+        oculus-thumbstick-controls="acceleration: 500"></a-entity>
     </a-entity>
 
-    <!-- IŞIK FIX -->
-    <a-light type="ambient" intensity="0.6"></a-light>
-    <a-light type="directional" intensity="1" position="1 1 1"></a-light>
+    <a-light intensity="0.2" type="ambient"></a-light> <!-- FIX -->
+    <a-light intensity="0.5" position="0 1 1"></a-light> <!-- FIX -->
 
-    <!-- SPACECRAFT (AYNI) -->
     <a-entity id="spacecraft" gltf-model="#craft" scale="10 10 10"
-      position="0 60 0"
-      animation="property: rotation; to: 0 360 0; dur: 30000; loop: true">
-      <a-camera id="cam2" active="false">
-        <a-entity id="txt"
-          text="value: ; color: red"
-          position="0 0 -2"></a-entity>
-      </a-camera>
+      animation="property: position; from: 0 66 0; to: 0 77 0; dur: 21000; dir: alternate; loop: true"
+      animation__2="property: rotation; from: 0 0 0; to: 0 360 0; dur: 39000; dir: alternate; loop: true">
+      <a-entity light="type: spot; penumbra: 0.5; distance: 200; castShadow: true"
+        position="0 -1 5" rotation="0 -180 0">
+        <a-camera id="cam2" position="0 3 6" active="false"
+          wasd-controls="enabled: false" look-controls="enabled: false">
+          <a-entity id="txt"
+            text="font: https://cdn.aframe.io/fonts/mozillavr.fnt; value: "
+            position="0.4 0 -0.2"></a-entity>
+        </a-camera>
+      </a-entity>
     </a-entity>
+
+    <!-- ZEMİN FIX -->
+    <a-box id="pavement" color="#333" width="80" height="0.5" depth="80"></a-box>
 
   </a-scene>
 </body>
