@@ -54,3 +54,26 @@
       <a-entity gltf-model="#tree" position="35 0 -15"></a-entity><a-entity gltf-model="#tree" position="35 0 -25"></a-entity>
       <a-box color="#666" width="30" height="10" depth="30" position="0 5 0"></a-box>
     </a-box>
+  <script>
+    var scene1 = document.querySelector('a-scene');
+    for (var i = -350; i <= 350; i += 100) {
+      for (var j = -350; j <= 350; j += 100) {
+        if (Math.abs(i) < 200 && Math.abs(j) < 200) continue;
+        var p = document.getElementById('pavement').cloneNode(true);
+        p.setAttribute('position', i + ' 0.25 ' + j);
+        p.setAttribute('visible', 'true');
+        scene1.appendChild(p);
+
+        var box = document.createElement('a-box');
+        var h = Math.ceil(Math.random() * 6);
+        box.setAttribute('src', "#b" + h);
+        box.setAttribute('repeat', '1 ' + Math.ceil(h / 2));
+        box.setAttribute('scale', '60 ' + (30 * (h + 1)) + ' 60');
+        box.setAttribute('position', i + ' ' + ((h + 1) * 15 + 10.5) + ' ' + j);
+        box.setAttribute('shadow', '');
+        box.setAttribute('colliding', '');
+        scene1.appendChild(box);
+      }
+    }
+  </script>
+    
