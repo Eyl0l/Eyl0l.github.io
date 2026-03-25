@@ -40,9 +40,9 @@ AFRAME.registerComponent('ghosting', {
       document.getElementById('shot').components.sound.playSound();
       document.getElementById('laser').setAttribute('line', 'start: 0 -0.01 0; end: 0 0 -1; color: lime');
     });
-    this.el.addEventListener('mouseleave', function () {
+    this.el.addEventListener('mouseleave', function (evt) {
       document.getElementById('laser').removeAttribute('line');
-      this.remove(); ghosts--;
+      evt.target.parentNode.removeChild(evt.target); ghosts--;
       if (ghosts <= 0) toggle('WELL DONE', '#scream');
     });
   },
