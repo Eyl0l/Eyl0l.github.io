@@ -15,7 +15,6 @@
         document.getElementById('txt').object3D.position.set(0, 0, 1);
         document.querySelector('a-scene').setAttribute('fog', 'type: linear; near: 2');
       }, 6000);
-      <!-- Ses çalmak için: -->
       var playerEl = document.getElementById('player');
       playerEl.setAttribute('sound', 'src: ' + s + '; autoplay: true');
     }
@@ -49,7 +48,6 @@
     AFRAME.registerComponent('ghosting', {
       init: function () {
         this.el.addEventListener('mouseenter', function () {
-          <!-- Ses: -->
           document.getElementById('shot').setAttribute('sound', 'src: #gun; autoplay: true');
           document.getElementById('laser').setAttribute('line',
             'start: 0 -0.01 0; end: 0 0 -1; color: lime');
