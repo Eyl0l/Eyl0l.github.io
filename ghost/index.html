@@ -141,13 +141,12 @@ AFRAME.registerComponent('ghosting', {
       var z = Math.random() * 700 - 350;
       var r = Math.random() * 360;
       ghost.setAttribute('gltf-model', '#ghost');
-      ghost.setAtrribute('position', x + ' ' + y + ' ' + z);
+      ghost.setAttribute('position', x + ' ' + y + ' ' + z);
       ghost.setAttribute('rotation', '0 ' + r + ' 0');
-      ghost.sestAttribute('scale', '100 100 100');
+      ghost.setAttribute('scale', '100 100 100');
       ghost.setAttribute('ghosting', '');
       scene1.appendChild(ghost);
     }
   </script>
 </body>
 </html>
-    
