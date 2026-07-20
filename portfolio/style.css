@@ -46,7 +46,7 @@ section {
 }
 
 #hero h1{
-    font-family: "Orbitron", sans-serif;
+    font-family: "Michroma", sans-serif;
     font-size: clamp(4rem,10vw,7rem);
     font-weight: 700;
     text-transform: uppercase;
