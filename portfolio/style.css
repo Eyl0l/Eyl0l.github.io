@@ -103,6 +103,37 @@ h2 {
     transform: translateY(-6px);
 }
 
+/* PROJECT GALLERY */
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+    margin-top: 50px;
+}
+
+.project-item {
+    text-align: center;
+}
+
+.project-item img {
+    width: 100%;
+    border-radius: 14px;
+    display: block;
+    transition: transform .3s ease;
+}
+
+.project-item img:hover {
+    transform: scale(1.03);
+}
+
+.project-item p {
+    margin-top: 15px;
+    color: #d6d6d6;
+    font-size: .95rem;
+    letter-spacing: 1px;
+}
+
 /* Skills */
 ul {
     list-style: none;
