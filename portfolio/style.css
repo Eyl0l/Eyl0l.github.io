@@ -27,22 +27,34 @@ section {
 /* Hero */
 #hero {
     height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    background-image: linear-gradient(
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.25)
+    ),
+    url("assets/images/5.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #hero h1 {
     font-size: clamp(4rem, 8vw, 7rem);
     font-weight: 700;
     letter-spacing: 4px;
+    color:#2d241b;
 }
 
 .subtitle {
     margin: 20px 0 40px;
     font-size: 1.2rem;
-    color: #8f8f8f;
+    color:#5b4d40;
     letter-spacing: 1px;
 }
 
@@ -57,7 +69,7 @@ section {
 }
 
 .button:hover {
-    background: white;
+    background:#4b3b2c;
     color: black;
 }
 
