@@ -10,6 +10,9 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 </head>
 <body>
 
@@ -45,25 +48,21 @@
     
         <div class="project-gallery">
     
-            <div class="project-item">
-                <img src="assets/images/1.jpg" class="gallery-image" alt="Final Render">
-                <p>Final Render</p>
-            </div>
+            <a href="assets/images/1.jpg" class="gallery">
+                <img src="assets/images/1.jpg" alt="Final Render">
+            </a>
     
-            <div class="project-item">
-                <img src="assets/images/2.jpg" class="gallery-image" alt="Screenshot from the CV">
-                <p>Screenshot from the CV</p>
-            </div>
+            <a href="assets/images/2.jpg" class="gallery">
+                <img src="assets/images/2.jpg" alt="Screenshot from the CV">
+            </a>
     
-            <div class="project-item">
-                <img src="assets/images/3.jpg" class="gallery-image" alt="Without Materials">
-                <p>Without Materials</p>
-            </div>
+            <a href="assets/images/3.jpg" class="gallery">
+                <img src="assets/images/3.jpg" alt="Without Materials">
+            </a>
     
-            <div class="project-item">
-                <img src="assets/images/4.jpg" class="gallery-image" alt="What's in the Box?">
-                <p>What's in the Box?</p>
-            </div>
+            <a href="assets/images/4.jpg" class="gallery">
+                <img src="assets/images/4.jpg" alt="What's in the Box?">
+            </a>
     
         </div>
     </section>
@@ -93,16 +92,12 @@
 
     <script src="script.js"></script>
     
-    <div id="lightbox" class="lightbox">
-
-    <span class="close">&times;</span>
-
-    <span class="prev">&#10094;</span>
-
-    <img id="lightbox-img">
-
-    <span class="next">&#10095;</span>
-
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    
+    <script>
+    const lightbox = GLightbox({
+        selector: '.gallery'
+    });
+    </script>
 </body>
 </html>
