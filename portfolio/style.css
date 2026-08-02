@@ -140,6 +140,29 @@ h2 {
     color:#d9d9d9;
 }
 
+.game-card{
+    width:100%;
+    aspect-ratio:16/9;
+    background:#1a1a1a;
+    border-radius:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    transition:.3s;
+}
+
+.game-card:hover{
+    transform:scale(1.02);
+    background:#262626;
+}
+
+.project-item a{
+    text-decoration:none;
+    color:white;
+}
+
 /* Skills */
 ul {
     list-style: none;
