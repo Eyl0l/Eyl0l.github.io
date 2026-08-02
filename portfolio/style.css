@@ -163,12 +163,37 @@ h2 {
     color:white;
 }
 
-/* Skills */
-ul {
-    list-style: none;
+/* CERTIFICATIONS */
+
+.certificate-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:40px;
+    margin-top:40px;
 }
 
-li {
-    margin-bottom: 10px;
-    color: #cfcfcf;
+.certificate-item{
+    text-align:center;
+}
+
+.certificate-item img{
+    width:100%;
+    border-radius:16px;
+    cursor:pointer;
+    transition:.3s ease;
+    display:block;
+}
+
+.certificate-item img:hover{
+    transform:scale(1.02);
+}
+
+.certificate-item p{
+    margin-top:18px;
+    font-weight:600;
+}
+
+.certificate-item span{
+    color:#bdbdbd;
+    font-size:.95rem;
 }
