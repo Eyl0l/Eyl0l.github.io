@@ -197,3 +197,11 @@ h2 {
     color:#bdbdbd;
     font-size:.95rem;
 }
+
+.project-category{
+    margin: 60px 0 25px;
+    font-family: "Michroma", sans-serif;
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
